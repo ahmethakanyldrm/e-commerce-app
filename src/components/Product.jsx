@@ -1,11 +1,14 @@
 import React from 'react'
 import '../css/Product.css'
+import { useNavigate } from 'react-router-dom';
 
 function Product({product}) {
   console.log(product);
   const {id, title, price, description, category, image} = product;
   console.log(description, category, id);
   
+  const navigate = useNavigate();
+
   return (
     <div className='card'>
       <img src={image} className='image' />
@@ -15,7 +18,7 @@ function Product({product}) {
       </div>
 
       <div className='flex-row'>
-        <button className='detailButton'>Detaya Git</button>
+        <button className='detailButton' onClick={()=> navigate("product-details/" + id)}>Detaya Git</button>
       </div>
     </div>
   )
