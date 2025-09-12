@@ -2,6 +2,7 @@ import React from 'react'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllProducts } from '../redux/slices/productSlice'
+import Product from './Product'
 
 function ProductList() {
 
@@ -15,15 +16,10 @@ function ProductList() {
 
   }, [])
   return (
-    <div>{
-      products.map((product) => (
-        <div key={product.id}>
-          <h2>{product.title}</h2>
-          <p>{product.description}</p>
-          <p>${product.price}</p>
-          <img src={product.image} alt={product.title} width="100" />
-        </div>
-      ))
+    <div className='flex-row' style={{flexWrap: "wrap", marginTop: "25px"}}>{
+     products && products.map((product) => (
+      <Product key={product.id} product={product} />
+     ))
     }</div>
   )
 }
