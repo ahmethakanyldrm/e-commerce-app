@@ -18,3 +18,7 @@
   background-color: var(--bg-secondary);
   transition: background-color 0.3s ease;
 }
+
+.drawer {
+  width: 500px !important;
+}

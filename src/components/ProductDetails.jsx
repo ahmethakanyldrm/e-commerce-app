@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { setSelectedProduct } from '../redux/slices/productSlice';
+import { addProductToBasket } from '../redux/slices/basketSlice';
 import {CiCirclePlus} from "react-icons/ci"
 import { CiCircleMinus } from "react-icons/ci";
 
@@ -36,6 +37,19 @@ function ProductDetails() {
     }
    })
   }
+
+  const addBasket = () => {
+    const payload = {
+      id,
+      price,
+      title,
+      image,
+      description,
+      count
+    }
+
+    dispatch(addProductToBasket(payload));
+  }
   
   return (
     <div
@@ -62,7 +76,9 @@ function ProductDetails() {
         </div>
 
         <div>
-          <button style={{marginTop: "25px", border: "none", padding: "10px", backgroundColor: "orange", borderRadius: "5px"}}>
+          <button style={{marginTop: "25px", border: "none", padding: "10px", backgroundColor: "orange", borderRadius: "5px"}}
+           onClick={addBasket}
+          >
             Sepete Ekle
           </button>
         </div>
